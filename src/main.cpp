@@ -7,6 +7,12 @@
 #include <ftxui/dom/elements.hpp>
 #include <ftxui/screen/screen.hpp>
 #include <ftxui/dom/table.hpp>
+#include "ftxui/component/captured_mouse.hpp"  // for ftxui
+#include "ftxui/component/component.hpp"       // for Renderer, Button, Vertical
+#include "ftxui/component/component_base.hpp"  // for ComponentBase
+#include "ftxui/component/screen_interactive.hpp"  // for ScreenInteractive
+#include "ftxui/dom/elements.hpp"  // for operator|, Element, text, bold, border, center, color
+#include "ftxui/screen/color.hpp"  // for Color, Color::Red
 using namespace std::string_literals;
 struct Process
 {
@@ -97,12 +103,12 @@ int main(void) {
   table.SelectRow(0).Border(DOUBLE);
 
   auto document = table.Render();
-  auto screen = Screen::Create(
-    Dimension::Fit(document) // Height
-  );
-  Render(screen, document);
-
-  screen.Print();
+  auto screen = ScreenInteractive::Fullscreen();
+  //Render(screen, document);
+  auto table_renderer = Renderer([&] {
+    return document;  //
+  });
+  screen.Loop(table_renderer);
 
   return EXIT_SUCCESS;
 }
