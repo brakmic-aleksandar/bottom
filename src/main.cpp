@@ -38,7 +38,6 @@ Status read_proc_status(int pid)
     while(std::getline(f, tp))
     {
       auto name_column = "Name:"s;
-      //std::cout << tp.substr(0, name_column.length()) << std::endl;
       if(tp.substr(0, name_column.length()) == name_column)
       {
 	status.name = tp.substr(name_column.length());
