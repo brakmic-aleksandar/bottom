@@ -1,6 +1,6 @@
 # not-top
 
-Simple top/htop clone demonstrating fxtui library.
+Simple top/htop clone demonstrating [FTXUI](https://github.com/ArthurSonzogni/FTXUI) library.
 
 ## Build instructions
 
