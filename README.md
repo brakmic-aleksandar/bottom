@@ -1,4 +1,4 @@
-# not-top
+# bottom
 
 Simple top/htop clone demonstrating [FTXUI](https://github.com/ArthurSonzogni/FTXUI) library.
 
